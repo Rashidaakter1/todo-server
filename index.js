@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+
+require("dotenv").config();
 const cors = require("cors");
 const app = express();
 
@@ -8,9 +10,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const port = 5000;
-mongoose.connect(
-  "mongodb+srv://rashidaakterchadni:3WH3NZaCSsF37tKR@cluster0.7w4lp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-);
+mongoose.connect(process.env.MONGO__DB__URI);
 
 const TodoSchema = new mongoose.Schema({
   id: {
